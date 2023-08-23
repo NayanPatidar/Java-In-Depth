@@ -9,7 +9,7 @@ public class SFTPClient {
         JSch jSch = new JSch();
 
         try {
-            Session session = jSch.getSession("Nayan", "10.200.233.92", 22 );
+            Session session = jSch.getSession("Nayan", "10.200.233.92", 200 );
             session.setPassword("Indore123$");
             session.setConfig("StrictHostKeyChecking", "no");
             session.connect();
