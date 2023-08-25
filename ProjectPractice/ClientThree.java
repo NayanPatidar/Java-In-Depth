@@ -12,7 +12,7 @@ public class ClientThree {
 
 
 		try {
-			InetAddress inetAddress = InetAddress.getByName("10.200.233.99");
+			InetAddress inetAddress = InetAddress.getByName("10.200.233.131");
 			int port = 12345;
 
 
