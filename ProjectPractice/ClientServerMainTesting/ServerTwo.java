@@ -20,14 +20,16 @@ public class ServerTwo {
 		Socket socket = serverSocket.accept();
 		System.out.println("Connection Accepted !!");
 		OutputStream outputStream = socket.getOutputStream();
+		DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
 
 		while (true) {
 			Point x = MouseInfo.getPointerInfo().getLocation();
-			System.out.println(x.x);
-			System.out.println(x.y);
-			String msg = x.x + " " + x.y;
-			outputStream.write(msg.getBytes());
-			outputStream.flush();
+			System.out.println(x.x + " " + x.y);
+
+			dataOutputStream.writeInt(x.x);
+			dataOutputStream.writeInt(x.y);
+			dataOutputStream.flush();
+
 			Thread.sleep(10);
 		}
 	}
