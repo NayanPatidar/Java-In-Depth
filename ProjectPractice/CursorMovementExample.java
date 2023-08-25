@@ -25,6 +25,7 @@ public class CursorMovementExample {
                 int currentX = (int) java.awt.MouseInfo.getPointerInfo().getLocation().getX();
                 int currentY = (int) java.awt.MouseInfo.getPointerInfo().getLocation().getY();
 
+
                 while (!ok){
                 if ((obj.currentMovementInX()-currentX != 0) || (obj.currentMovementInX()-currentX != 0) ||
                 (obj.currentMovementInY()-currentY != 0) || (obj.currentMovementInY()-currentY != 0)){
@@ -37,7 +38,7 @@ public class CursorMovementExample {
                     ok = true;
                     moved = true;
 
-                    robot.mouseMove(currentX + offsetX, currentY + offsetY);
+                    robot.mouseMove(currentX , currentY);
                 }
                 }
             }

@@ -28,9 +28,10 @@ public class Server {
 
 						String msg = x + " " + y;
 						dataOutputStream.writeUTF("X");
-						dataOutputStream.writeInt(x);
+//						dataOutputStream.writeInt(x);
 						dataOutputStream.writeUTF("Y");
-						dataOutputStream.writeInt(y);
+//						dataOutputStream.writeInt(y);
+						System.out.println(x + " " + y);
 						dataOutputStream.flush();
 
 					}

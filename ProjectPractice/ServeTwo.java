@@ -21,6 +21,7 @@ public class ServeTwo {
 
                     String msg = x + " " + y;
                     printWriter.println(msg);
+                    printWriter.flush();
 
                 }
             }

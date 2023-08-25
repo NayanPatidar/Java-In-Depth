@@ -16,12 +16,12 @@ public class MovementCheck {
         int screenHeight = sizeOfScreen.height;
         System.out.println(screenHeight + " " + screenWidth);
 
+
         while (true){
             Point x = MouseInfo.getPointerInfo().getLocation();
         System.out.println(x.x);
         System.out.println(x.y);
-        Thread.sleep(80);
-            System.out.println();
+        Thread.sleep(8);
     }
 
 

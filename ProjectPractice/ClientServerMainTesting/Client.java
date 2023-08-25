@@ -15,7 +15,7 @@ public class Client {
 	private void startClient() {
 		try {
 			Robot robot = new Robot();
-			InetAddress inetAddress = InetAddress.getByName("10.200.233.131");
+			InetAddress inetAddress = InetAddress.getByName("10.200.233.99");
 			int port = 12345;
 
 			Socket socket = new Socket(inetAddress, port);
@@ -33,7 +33,7 @@ public class Client {
 				} else if (msg.equals("Y")) {
 					receivedY = dataInputStream.readInt();
 				}
-//					movement(robot, receivedX, receivedY);
+					movement(robot, receivedX, receivedY);
 				System.out.println(receivedX+  " " + receivedY);
 				}
 
