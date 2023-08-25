@@ -10,12 +10,12 @@ public class ClientThree {
 	public static void main(String[] args) {
 
 
-		while (true){
+
 		try {
 			InetAddress inetAddress = InetAddress.getByName("10.200.233.99");
 			int port = 12345;
 
-			while (true) {
+
 				Socket socket = new Socket(inetAddress, port);
 				System.out.println("Got Connected ...");
 				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -30,14 +30,14 @@ public class ClientThree {
 					}
 
 				}
-			}
+
 		} catch (IOException e) {
 			System.out.println("Retrying");
 		}
 
 	}
 
-	}
+
 
 	private static void movement(String msg) throws  NullPointerException{
 
