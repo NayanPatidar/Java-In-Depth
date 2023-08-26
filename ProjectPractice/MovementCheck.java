@@ -1,3 +1,5 @@
+
+
 import javax.swing.*;
 import javax.swing.plaf.IconUIResource;
 import javax.tools.Tool;
@@ -14,14 +16,14 @@ public class MovementCheck {
 
         int screenWidth = sizeOfScreen.width;
         int screenHeight = sizeOfScreen.height;
-        System.out.println(screenHeight + " " + screenWidth);
+        System.out.println(screenHeight + " " + screenWidth + "\n");
 
 
         while (true){
             Point x = MouseInfo.getPointerInfo().getLocation();
-        System.out.println(x.x);
-        System.out.println(x.y);
-        Thread.sleep(8);
+        System.out.println(x.x + " " + x.y);
+
+        Thread.sleep(80);
     }
 
 
