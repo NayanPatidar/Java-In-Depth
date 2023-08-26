@@ -6,6 +6,7 @@ public class CursorHiding {
 
 
 	public static void main(String[] args) throws InterruptedException {
+
 		JFrame frame = new JFrame();
 
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
