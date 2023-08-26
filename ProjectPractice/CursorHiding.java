@@ -14,6 +14,7 @@ public class CursorHiding {
 		// Get the screen size
 		Dimension screenSize = toolkit.getScreenSize();
 
+
 		int screenWidth = screenSize.width;
 		int screenHeight = screenSize.height;
 //		Thread.sleep(10000);
@@ -23,8 +24,10 @@ public class CursorHiding {
 		Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
 		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
 		frame.setCursor(blankCursor);
-		GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		device.setFullScreenWindow(frame);
+
+
+//		GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+//		device.setFullScreenWindow(frame);
 
 		frame.setUndecorated(true);
 //		frame.getContentPane().setBackground(new Color(0, 0, 0, 0)); // R, G, B, Alpha
