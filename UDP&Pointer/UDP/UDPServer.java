@@ -4,41 +4,31 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 public class UDPServer {
 	public static void main(String[] args) throws IOException {
+		InetAddress serverAddress = InetAddress.getByName("172.20.10.12");
+		int serverPort = 12345;
 
-		try {
-			Robot robot = new Robot();
+		DatagramSocket socket = new DatagramSocket();
 
-			int serverPort = 12345;
+		while (true) {
+			Point cursorLocation = MouseInfo.getPointerInfo().getLocation();
+			int x = cursorLocation.x;
+			int y = cursorLocation.y;
 
-			DatagramSocket socket = new DatagramSocket(serverPort);
+			String message = x + " " + y;
+			byte[] sendData = message.getBytes();
+			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, serverAddress, serverPort);
 
-			byte[] receiveData = new byte[1024];
+			socket.send(sendPacket);
 
-			while (true) {
-				DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-				socket.receive(receivePacket);
-
-				String receivedMessage = new String(receivePacket.getData(), 0, receivePacket.getLength());
-				String[] coordinates = receivedMessage.split(" ");
-				if (coordinates.length == 2) {
-					int receivedX = Integer.parseInt(coordinates[0]);
-					int receivedY = Integer.parseInt(coordinates[1]);
-					movement(receivedX, receivedY, robot);
-					Thread.sleep(8);
-					// Process receivedX and receivedY as needed
-//				System.out.println("Received Coordinates: " + receivedX + ", " + receivedY);
-				}
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
 			}
-		} catch (AWTException | InterruptedException e) {
-			throw new RuntimeException(e);
 		}
-	}
-
-	private static void movement(int receivedX, int receivedY, Robot robot) {
-		robot.mouseMove(receivedX, receivedY);
-
 	}
 }
