@@ -23,6 +23,9 @@ public class CursorHiding {
 		Image blankImage = Toolkit.getDefaultToolkit().createImage(new byte[0]);
 		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankImage, new Point(0, 0), "blankCursor");
 		frame.setCursor(blankCursor);
+		GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		device.setFullScreenWindow(frame);
+
 		frame.setUndecorated(true);
 //		frame.getContentPane().setBackground(new Color(0, 0, 0, 0)); // R, G, B, Alpha
 		frame.setOpacity(0.004f);
