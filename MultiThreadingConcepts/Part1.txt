@@ -1,0 +1,26 @@
+Introduction to threads :
+
+"The popularity of threading increased when graphical interfaces became the standard for desktop computers
+because the threading system allowed the user to perceive better program performance. The introduction of
+threads into these platforms didn't make the programs any faster, but it created an illusion of faster
+performance for the user, who now had a dedicated thread to service input or display output."
+
+"Many developers, used to programming on a local area
+network (LAN), are vaguely aware that writing to a socket may also block, but it's a possibility that many of
+them ignore because it happens only under certain circumstances, such as a backlog in getting data onto the
+network. This backlog rarely happens on a fast LAN, but if you're using Java to program sockets over the
+Internet, the chances of this backlog happening are greatly increased, thus increasing the chance of blocking
+while attempting to write data onto the network. In Java, you may need two threads to handle the socket: one
+to read from the socket and one to write to it."
+
+Alarms and Timers
+"Traditional operating systems typically provide some sort of timer or alarm call: the program sets the timer
+and continues processing. When the timer expires, the program receives some sort of asynchronous signal that
+notifies the program of the timer's expiration.
+In early versions of Java, the programmer had to set up a separate thread to simulate a timer. That thread slept
+for the duration of a specified time interval and then notified other threads when the timer expired. As Java
+matured, multiple new classes that provide this functionality were added. These new classes use the exact
+same technique to provide the functionality, but they hide (at least some of) the threading details from the
+developer." 
+
+
