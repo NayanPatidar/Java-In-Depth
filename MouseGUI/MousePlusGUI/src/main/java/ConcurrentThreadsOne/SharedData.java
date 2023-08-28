@@ -1,30 +1,23 @@
 package ConcurrentThreadsOne;
 
-public class SharedData {
-	// It is the shared data according to wich the threads are working with
-	private volatile boolean flag = false;
-
-	//  Only one thread can call it
-	// Setting the flag as true
-	public synchronized void setFlag() {
-		this.flag = true;
-		notify();
+public 	class SharedData {
+	// It is the shared data according to which the threads are working with
+	public static volatile int forGui = 1;
+	public static volatile int forMouseClicks;
+	public int getForGui(){
+		return forGui;
 	}
 
-	public synchronized void removeFlag(){
-		this.flag = false;
-		notify();
+	public void setForGui(int val){
+		forGui = val;
 	}
 
-	// This is to just get the flag variable
-	public synchronized boolean getFlag() {
-		return flag;
+	public int getForMouseClicks(){
+		forMouseClicks = forGui;
+		return forMouseClicks;
 	}
 
-	// Thread B waits for the flag to become true
-	public synchronized void waitForFlag() throws InterruptedException {
-		while (!flag) {
-			wait();
-		}
-	}
+//	public void setForMouseClicks(int val){
+//		this.forMouseClicks = val;
+//	}
 }

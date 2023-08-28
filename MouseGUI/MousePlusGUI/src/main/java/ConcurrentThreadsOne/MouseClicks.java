@@ -1,45 +1,39 @@
 package ConcurrentThreadsOne;
 
-import ConcurrentThreadsOne.MouseClickTracker;
-import ConcurrentThreadsOne.SharedData;
-
 import javax.swing.*;
+import java.util.concurrent.TimeUnit;
 
 public class MouseClicks implements Runnable {
 	private JFrame jFrame;
+	MouseClickTracker clickTracker;
+	public boolean executed = false;
+	public int val = 0;
 	private SharedData sharedData;
-	private MouseClickTracker clickTracker;
-	volatile boolean methodCalled = false;
 
-	public MouseClicks(SharedData sharedData, JFrame jFrame) {
+	public MouseClicks(JFrame jFrame, SharedData sharedData) {
 		this.jFrame = jFrame;
 		this.sharedData = sharedData;
 	}
 
+
 	@Override
 	public void run() {
 		while (true) {
-			try {
-				sharedData.waitForFlag();
-			} catch (InterruptedException e) {
-				throw new RuntimeException(e);
+			if ((sharedData.getForMouseClicks() == 0) && (val == 0)){
+				System.out.println("Calling GUI");
+				SwingUtilities.invokeLater(() -> {
+					clickTracker = new MouseClickTracker(jFrame);
+				});
+				val ++;
+			}else if ((sharedData.getForMouseClicks() == 1) && (val == 1)){
+				System.out.println("Disposing GUI");
+				if (clickTracker != null) {
+					clickTracker.disposeMouseListener();
+				}
+				jFrame.dispose();
+				val--;
 			}
 
-			if (sharedData.getFlag()) {
-				if (clickTracker == null) {
-					SwingUtilities.invokeLater(() -> {
-						clickTracker = new MouseClickTracker(jFrame);
-						methodCalled = true;
-					});
-				}
-			} else {
-				if (clickTracker != null) {
-					SwingUtilities.invokeLater(() -> {
-						jFrame.dispose();
-						methodCalled = false;
-					});
-				}
-			}
 		}
 	}
 }
