@@ -1,6 +1,6 @@
 package HideCursor;
 
-import sun.security.mscapi.CPublicKey;
+//import sun.security.mscapi.CPublicKey;
 
 import javax.management.timer.TimerMBean;
 import javax.swing.*;

@@ -10,7 +10,7 @@ import java.net.InetAddress;
 
 public class UDPServer {
 	public static void main(String[] args) throws IOException {
-		InetAddress serverAddress = InetAddress.getByName("10.200.233.32");
+		InetAddress serverAddress = InetAddress.getByName("10.200.233.131");
 		int serverPort = 12345;
 
 		DatagramSocket socket = new DatagramSocket();
@@ -20,16 +20,16 @@ public class UDPServer {
 			int x = cursorLocation.x;
 			int y = cursorLocation.y;
 
-			if (x > 1279){
-				try {
-					MainConfig mainConfig = new MainConfig();
-
-
-				} catch (AWTException | InterruptedException e) {
-					throw new RuntimeException(e);
-				}
-
-			}
+//			if (x > 1279){
+//				try {
+//					MainConfig mainConfig = new MainConfig();
+//
+//
+//				} catch (AWTException | InterruptedException e) {
+//					throw new RuntimeException(e);
+//				}
+//
+//			}
 
 			String message = x + " " + y;
 			byte[] sendData = message.getBytes();
@@ -38,7 +38,7 @@ public class UDPServer {
 			socket.send(sendPacket);
 
 			try {
-				Thread.sleep(10);
+				Thread.sleep(11);
 			} catch (InterruptedException e) {
 				throw new RuntimeException(e);
 			}

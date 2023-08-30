@@ -1,14 +1,11 @@
 package ConcurrentThreadsOne;
 
 import javax.swing.*;
-import java.util.concurrent.TimeUnit;
-
 public class MouseClicks implements Runnable {
 	private JFrame jFrame;
 	MouseClickTracker clickTracker;
-	public boolean executed = false;
 	public int val = 0;
-	private SharedData sharedData;
+	private final SharedData sharedData;
 
 	public MouseClicks(JFrame jFrame, SharedData sharedData) {
 		this.jFrame = jFrame;
