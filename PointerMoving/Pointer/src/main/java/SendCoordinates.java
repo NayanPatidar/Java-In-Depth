@@ -1,7 +1,5 @@
 import java.awt.*;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -14,22 +12,18 @@ public class SendCoordinates {
 		int x, y;
 
 
-		while (true) {
+
 			Socket waitForConnectionWithClient = serverSocket.accept(); // It will wait for the client to join
 			System.out.println("Connection Accepted !!!");
 			OutputStream outputStream = waitForConnectionWithClient.getOutputStream();
-
+		DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
 
 			while (true){
-				x = (int)java.awt.MouseInfo.getPointerInfo().getLocation().getX();
-				y = (int)java.awt.MouseInfo.getPointerInfo().getLocation().getY();
-				System.out.println(x + " " + y + "\n");
+				Point cursorLocation = MouseInfo.getPointerInfo().getLocation();
+				x = cursorLocation.x;
+				y = cursorLocation.y;
 				String msg = x + " " + y + "\n";
-
 				outputStream.write(msg.getBytes());
-				outputStream.flush();
-
-			}
 		}
 
 	}
