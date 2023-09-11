@@ -2,7 +2,6 @@ package ConcurrentThreadsOne;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.font.ShapeGraphicAttribute;
 
 public class GUI implements Runnable {
 	private static JFrame jFrame;
@@ -21,8 +20,9 @@ public class GUI implements Runnable {
 
 			if (mousePosition.getX() < 180 && (sharedData.getForGui() == 1)) {
 				System.out.println("Leaving Screen");
-				sharedData.setForGui(0);
 				jFrame.setVisible(true);
+				sharedData.setForGui(0);
+				new CoordinatesTransfer();
 
 			} else if (mousePosition.getX() >= 180 && (sharedData.getForGui() == 0)) {
 				System.out.println("Entered Screen");
