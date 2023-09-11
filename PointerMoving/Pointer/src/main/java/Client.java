@@ -7,7 +7,7 @@ import java.net.Socket;
 
 public class Client {
 	public static void main(String[] args) throws IOException {
-		InetAddress inetAddress = InetAddress.getByName("10.200.233.32");
+		InetAddress inetAddress = InetAddress.getByName("10.200.233.99");
 		int port = 12345;
 
 		Socket socket = new Socket(inetAddress, port);
